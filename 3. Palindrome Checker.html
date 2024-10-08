@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+</head>
+
+<body>
+
+    <!-- Exercise 3: Palindrome Checker
+    Objective: Write a JavaScript program to check if a given word or phrase is a palindrome. A palindrome is a word,
+    phrase, or sequence that reads the same backward as forward (ignoring spaces, punctuation, and capitalization). -->
+
+    <!-- Instructions:
+
+    Ask the user to input a word or phrase.
+    Remove any spaces and special characters, and convert the input to lowercase.
+    Check if the word or phrase reads the same backward and forward.
+    If it is a palindrome, display "Yes, it's a palindrome!".
+    If it's not a palindrome, display "No, it's not a palindrome!". -->
+
+    <!-- Example:
+    Input: "Racecar"
+    Output: "Yes, it's a palindrome!"
+
+    Input: "Hello"
+    Output: "No, it's not a palindrome!" -->
+
+
+    <script>
+
+        function PalindromeChecker() {
+            let UserInp = prompt("Enter a word or phrase");
+            if (UserInp === "") {
+                alert("Please enter a valid word or phrase.");
+                return;
+            }
+            UserInp = UserInp.toLowerCase().trim().replace(/[^a-z0-9]/g, '');
+
+            let reversedInp = UserInp.split("").reverse().join("")
+
+            if (reversedInp === UserInp) {
+                alert("Yes, it's a palindrome!");
+            } else {
+                alert("No, it's not a palindrome!")
+            }
+        }
+
+        PalindromeChecker()
+
+        do {
+            PalindromeChecker();
+        } while (confirm("Do you want to check another word or phrase?"));
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz</title>
+</head>
+
+<body>
+
+    <!-- Exercise 2: FizzBuzz
+    Objective: Write a program that prints numbers from 1 to 100. But for multiples of 3, print "Fizz" instead of the
+    number, and for multiples of 5, print "Buzz". For numbers which are multiples of both 3 and 5, print "FizzBuzz".
+
+    Instructions:
+
+    Loop through numbers 1 to 100.
+    For each number:
+    If it is divisible by 3, print "Fizz".
+    If it is divisible by 5, print "Buzz".
+    If it is divisible by both 3 and 5, print "FizzBuzz".
+    Otherwise, just print the number. -->
+
+    <!-- 1
+    2
+    Fizz
+    4
+    Buzz
+    Fizz
+    7
+    8
+    Fizz
+    Buzz
+    11
+    Fizz
+    13
+    14
+    FizzBuzz
+    ... -->
+
+
+    <script>
+
+        let start = parseInt(prompt("Starting number:"));
+        let end = parseInt(prompt("Ending number:"));
+
+        if (start === 0) {
+            document.write("0<br>");
+        }
+
+        if (!isNaN(start) && !isNaN(end) && start >= 0 && end >= 0) {
+            for (start; start <= end; start++) {
+
+                if (start % 3 === 0 && start % 5 === 0) {
+                    document.write("FizzBuzz <br>")
+                }
+                else if (start % 3 === 0) {
+                    document.write("Fizz <br>")
+                }
+                else if (start % 5 === 0) {
+                    document.write("Buzz <br>")
+                } else {
+                    document.write(start + "<br>")
+                }
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

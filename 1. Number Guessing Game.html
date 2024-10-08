@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 1: Number Guessing Game -->
+
+    <!-- Generate a random number between 1 and 100.
+    Ask the user to guess the number using a prompt.
+    If the user's guess is too high or too low, give them feedback.
+    Keep asking the user for a guess until they guess the correct number.
+    Once the user guesses correctly, congratulate them and tell them how many attempts it took. -->
+
+    <!-- Bonus Challenge:
+    Add a maximum number of attempts (like 10) and tell the user they lost if they exceed this number -->
+
+    <!-- Output -->
+    <!-- Welcome to the Number Guessing Game!
+    I have selected a number between 1 and 100. Can you guess it?
+    Your guess: 50
+    Too high! Try again.
+    Your guess: 25
+    Too low! Try again.
+    Your guess: 30
+    Congratulations! You've guessed the number in 3 attempts! -->
+
+
+
+    <script>
+
+        let greet = alert("Welcome to the Number Guessing Game!")
+        let Limit = alert("You have only 10 attempts to guess")
+        let ask = alert("I have selected a number between 1 and 100. Can you guess it?")
+
+        let RandomNum = Math.floor(Math.random() * 100) + 1
+
+        let userAttempt = 1;
+        while (true) {
+            let UserPrompt = parseInt(prompt("Guess The Number"))
+            const maxLimit = 10;
+
+            let leftLimit = maxLimit - userAttempt;
+
+            if(userAttempt == maxLimit){
+                alert("Dont Worry The Number Is " + RandomNum)
+                break
+            }
+
+            if(RandomNum == UserPrompt){
+                alert("Congratulations! You've guessed the number " + RandomNum + " in " + userAttempt + " attempts!")
+                break
+            }
+            else if (RandomNum < UserPrompt) {
+                alert("Your Number is too high. Only " + leftLimit + " left" )
+                userAttempt++
+            } else {
+                alert("Your Number is too low. Only " + leftLimit + " left")
+                userAttempt++
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

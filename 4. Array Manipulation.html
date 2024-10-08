@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation</title>
+</head>
+
+<body>
+
+    <!-- Exercise 4: Array Manipulation
+    Objective: Write a program that takes an array of numbers and performs the following tasks:
+
+    Sum: Calculate the sum of all the numbers in the array.
+    Largest Number: Find the largest number in the array.
+    Reverse Array: Reverse the array and print the reversed version. -->
+
+
+
+    <!-- Example:
+    Input: [3, 7, 2, 9, 5]
+    Output:
+
+    Sum: 26
+    Largest Number: 9
+    Reversed Array: [5, 9, 2, 7, 3] -->
+
+
+    <!-- Hint:
+    You can use a loop to calculate the sum and find the largest number.
+    Use reverse() method to reverse the array. -->
+
+    <script>
+
+        let array = [5, 9, 2, 7, 3];
+        console.log(array)
+        let sum = 0;
+        let largest = array[0]
+        let reversed = [...array].reverse()
+
+        for (let i = 0; i < array.length; i++) {
+            sum = sum + array[i]
+
+            if(array[i] > largest){
+                largest = array[i]
+            }
+        }
+        
+        console.log(`Sum: ${sum}`)
+        console.log(`Largest: ${largest}`)
+        console.log(`Reversed: ${reversed}`)
+
+    </script>
+</body>
+
+</html>
