@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculation</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 6: Factorial Calculation
+    Objective: Write a program that calculates the factorial of a given number.
+
+    Instructions:
+    Ask the user to input a non-negative integer.
+    Use a loop to calculate the factorial of the number.
+    Display the result.
+    Example Output:
+    Input: 5
+    Output: Factorial of 5 is 120 -->
+
+    <script>
+
+        let n = Number.parseInt(prompt("Enter a non-negative integer:"));
+
+        if (n < 0) {
+            alert("Error: Please enter a non-negative integer."); 
+        }
+        else {
+            let factorial = 1;
+            for (let i = 1; i <= n; i++) {
+                factorial *= i;
+            }
+            alert(`Factorial of ${n} is ${factorial}`); 
+        }
+
+    </script>
+
+</body>
+
+</html>

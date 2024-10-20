@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 7: Fibonacci Sequence
+    Objective: Write a program to generate the Fibonacci sequence up to a certain number of terms.
+
+    Instructions:
+
+    Ask the user for the number of terms they want in the Fibonacci sequence.
+    The first two terms are always 0 and 1.
+    Each subsequent term is the sum of the previous two terms.
+    Display the generated Fibonacci sequence. -->
+
+    <!-- Example Output:
+
+    Input: 7
+    Output: 0, 1, 1, 2, 3, 5, 8 -->
+
+
+
+    <script>
+
+        let UserInp = Number.parseInt(prompt("Enter your number"));
+        let Previous = 0;
+        let Current = 1;
+        let result;
+
+        for (let i = 0; i < UserInp; i++) {
+            console.log(Previous); 
+            result = Previous + Current;
+            Previous = Current;
+            Current = result;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
