@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Even Numbers</title>
+</head>
+
+<body>
+
+    <!-- Exercise 8: Sum of Even Numbers
+
+    Objective: Write a program that calculates the sum of all even numbers between two given numbers.
+
+    Instructions:
+
+    Ask the user for two numbers: a start number and an end number.
+    Loop through all numbers between the start and end numbers (inclusive).
+    If a number is even, add it to a running total.
+    Display the total sum of all even numbers.
+    Example:
+
+    Input: Start number: 3, End number: 10
+    Output: Sum of even numbers: 28 (because 4 + 6 + 8 + 10 = 28) -->
+
+
+    <script>
+
+        let Start = Number.parseInt(prompt("Enter Your First Number"))
+        let End = Number.parseInt(prompt("Enter Your Second Number"))
+        let sum = 0;
+        for(let i = Start; i<=End; i++){
+            if(i % 2 === 0){
+                sum = sum + i
+            }
+        }
+        console.log("Sum of your even numbers are:" + sum)
+
+    </script>
+</body>
+
+</html>

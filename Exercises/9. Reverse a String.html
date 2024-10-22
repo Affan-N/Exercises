@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse a String</title>
+</head>
+
+<body>
+
+    <!-- Exercise 9: Reverse a String
+    Objective: Write a program that takes a string input from the user and reverses it.
+
+    Instructions:
+    Ask the user to input a string.
+    Reverse the string using a loop or built-in methods.
+    Display the reversed string.
+    Example Output:
+    Input: "Hello"
+    Output: "olleH" -->
+
+
+
+    <script>
+
+        let str = prompt("Enter Your String")
+        let reversedstr = ""
+
+        for(let i = str.length - 1; i >= 0 ; i--){
+            reversedstr = reversedstr + str[i]
+        }
+        console.log("Your String is " + str + " Your Reversed String is " + reversedstr)
+
+
+    </script>
+
+</body>
+
+</html>
