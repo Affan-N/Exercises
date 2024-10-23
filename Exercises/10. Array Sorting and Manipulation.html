@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sorting and Manipulation</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 10: Array Sorting and Manipulation
+    Objective: Write a program that sorts an array of numbers in ascending order and removes any duplicate numbers from
+    the array.
+
+    Instructions:
+    Create an array with random numbers (some of which are duplicates).
+    Sort the array in ascending order.
+    Remove all duplicate numbers from the array.
+    Display the sorted array and the array without duplicates.
+    Example:
+    Input: [3, 7, 3, 1, 9, 1, 5]
+    Output:
+    Sorted Array: [1, 1, 3, 3, 5, 7, 9]
+    Array Without Duplicates: [1, 3, 5, 7, 9] -->
+
+
+
+    <script>
+
+        let array = [3, 7, 3, 1, 9, 1, 5]
+        console.log("Normal Array: " + array)
+        let sortedArray = array.sort((a,b)=>{
+            return a - b
+        });
+        console.log("Sorted Array: " + sortedArray)
+
+
+        let NewArray = []
+
+        for(let i = 0; i < array.length; i++){
+            if(i === 0 || sortedArray[i] !== sortedArray[i - 1]){
+                NewArray.push(sortedArray[i])
+            }
+        }
+        console.log("Array Without Duplicates: " + NewArray)
+
+    </script>
+
+</body>
+
+</html>

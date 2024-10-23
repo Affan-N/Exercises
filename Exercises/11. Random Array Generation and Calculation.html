@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Array Generation and Calculation</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 11: Random Array Generation and Calculation
+    Objective: Write a program that generates an array of random numbers and performs some calculations on it.
+
+    Instructions:
+
+    Generate an array of 10 random numbers between 1 and 100.
+    Calculate the sum of all the numbers in the array.
+    Find the maximum and minimum numbers in the array.
+    Display the generated array, the sum, the maximum, and the minimum numbers.
+    Example Output:
+
+    Generated Array: [23, 45, 67, 12, 89, 34, 56, 78, 1, 100]
+    Sum: 435
+    Maximum: 100
+    Minimum: 1 -->
+
+
+
+    <script>
+
+        let RandomArray = [];
+        let SumArray = 0;
+
+        for (let i = 1; i <= 10; i++) {
+            RandomArray.push(Math.floor(Math.random() * 100))
+        }
+        console.log("Random Array: " + RandomArray)
+
+        for (let i = 0; i < RandomArray.length; i++) {
+            SumArray = SumArray + RandomArray[i]
+        }
+        console.log("Random Array Sum: " + SumArray)
+
+        let Maximum = Math.max(...RandomArray)
+        console.log("Maximum: " + Maximum)
+        
+        let Minimum = Math.min(...RandomArray)
+        console.log("Minimum: " + Minimum)
+        
+
+    </script>
+
+</body>
+
+</html>
