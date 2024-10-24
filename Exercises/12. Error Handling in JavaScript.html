@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling in JavaScript</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 12: Error Handling in JavaScript
+    Objective: Write a program that takes a number as input from the user and calculates its square. If the input is
+    invalid (e.g., a string, a negative number, or not a number), handle the error gracefully.
+
+    Instructions:
+    Prompt the user to enter a positive number.
+    If the user provides valid input, calculate and display the square of the number.
+    If the input is invalid (e.g., a string, negative number, or not a number), show a friendly error message.
+    Use try...catch to handle errors.
+    Example output:
+
+    Valid Input:
+    Input: 4
+    Output: The square of 4 is 16.
+
+    Invalid Input:
+    Input: -5
+    Output: Error: Please enter a positive number. -->
+
+
+
+
+    <script>
+
+        let UserNum = Number.parseInt(prompt("Enter a positive number"))
+        
+        try {
+            if (UserNum < 0) {
+                throw new Error("Please enter a positive number")
+            }else if(isNaN(UserNum)){
+                throw new Error("Your Character is not a number");
+            }else if (UserNum === 0){
+                throw new Error("You Entered Zero")
+            }else{
+                console.log(square(UserNum))
+            }
+
+        } catch (err) {
+            alert("Your Error is: " + err.message)
+        }
+
+        function square(num) {
+            let squareNum = num * num;
+            return squareNum
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
