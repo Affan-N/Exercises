@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Array Manipulation and Analysis</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 13: Enhanced Array Manipulation and Analysis
+
+    Objective: Write a program that:
+
+    Generates an array of 10 random integers between 1 and 100.
+    Finds the sum, average, maximum, and minimum values of the array.
+    Filters the array to show only the unique values.
+    Checks if the sum of the array is even or odd, and throw an error if the sum is 0.
+    Instructions:
+
+    Generate the array using Math.random.
+    Calculate the sum, average, minimum, and maximum values.
+    Use your previous techniques to remove duplicates from the array.
+    Check if the sum is even or odd and display an appropriate message. If the sum is 0, throw an error saying, "Sum
+    cannot be zero."
+
+    Output Example:
+
+    Generated Array: [ ... ]
+    Unique Array: [ ... ]
+    Sum: ...
+    Average: ...
+    Max: ...
+    Min: ...
+    Sum is even/odd. -->
+
+
+    <script>
+
+        let RandomArray = [];
+
+        // Random Number Generator
+        let GeneratedNumber;
+        for (let i = 0; i < 10; i++) {
+            GeneratedNumber = Math.floor(Math.random() * 100)
+            RandomArray.push(GeneratedNumber)
+        }
+
+        console.log("Random Generated Array: " + RandomArray)
+
+        // Calculate Sum
+        let Sum = RandomArray.reduce((a, b) => {
+            return a + b
+        })
+        console.log("Sum of the Random Generated Array: " + Sum)
+
+        // Calculate Average
+        let Average = Sum / RandomArray.length
+        console.log("Average of the Random Generated Array: " + Average)
+
+        // Maximum
+        let Maximum = Math.max(...RandomArray)
+        console.log("Maximum Number is Array: " + Maximum)
+
+        // Minimum
+        let Minimum = Math.min(...RandomArray)
+        console.log("Minimum Number in Array: " + Minimum)
+
+        // Removing Duplicates in Array
+        let NewArray = [];
+        for (let k = 0; k < RandomArray.length; k++) {
+            if (k === 0 || RandomArray[k] !== RandomArray[k - 1]) {
+                NewArray.push(RandomArray[k])
+            }
+        }
+        console.log("Removing Duplicates in Array: " + NewArray)
+
+        // Error Handling
+        if (Sum % 2 === 0) {
+            console.log("The sum is Even: " + Sum)
+        } else {
+            console.log("The sum is Odd: " + Sum)
+        }
+
+        try {
+            if (Sum === 0) {
+                throw new Error("Sum cannot be zero.");
+            }
+        } catch (err) {
+            console.log("Error is: " + err)
+        }
+
+
+
+    </script>
+</body>
+
+</html>
