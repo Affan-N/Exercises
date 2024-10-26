@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Manipulation</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 14: Object Manipulation
+    Objective:
+    Create a "Student" object with a few properties and a method. This method will update the student's data and display
+    it.
+
+    Instructions:
+    Object Creation: Create an object named student with the following:
+
+    Properties: name, age, grade, and subjects (an array).
+    A method updateGrade to increment the grade by one.
+    Interaction:
+
+    Display the initial properties of the object in the console.
+    Call the updateGrade method to update the grade, then display the updated properties. -->
+
+
+    <!-- Example Output:
+    Initial Student Info:
+    Name: Ahmed
+    Age: 16
+    Grade: 10
+    Subjects: ["Math", "Science", "English"]
+
+    Updated Student Info:
+    Name: Ahmed
+    Age: 16
+    Grade: 11
+    Subjects: ["Math", "Science", "English"] -->
+
+
+    <script>
+
+        let Student = {
+            name: "Ali",
+            age: 15,
+            grade: 10,
+            subjects: ["English", "Math", "Science"],
+            updateGrade: function () {
+                this.grade = this.grade + 1;
+            }
+        }
+        console.log(`Initial Student Info:
+        Name: ${Student.name}
+        Age: ${Student.age}
+        Grade: ${Student.grade}
+        Subjects: ${Student.subjects}
+`)
+
+        Student.updateGrade();
+
+        console.log(`Updated Student Info:
+        Name: ${Student.name}
+        Age: ${Student.age}
+        Grade: ${Student.grade}
+        Subjects: ${Student.subjects}
+`)
+
+
+    </script>
+
+</body>
+
+</html>

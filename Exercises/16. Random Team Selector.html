@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Team Selector</title>
+</head>
+
+<body>
+
+    <!-- Exercise 16: Random Team Selector
+    Task: Write a function that creates random teams of students from an array, using an object to store the teams. Add
+    error handling for possible issues.
+
+    Requirements:
+
+    Array of Students: Start with an array of student names.
+    Random Team Assignment: Use a function to randomly assign each student to a team (e.g., Team A, Team B).
+    Object for Teams: Store teams in an object where each key is a team name, and each value is an array of students
+    assigned to that team.
+    Error Handling: If the array is empty or if any student isn’t assigned properly, throw an error and handle it
+    gracefully.
+
+    Example Output:
+
+    const students = ["Alice", "Bob", "Charlie", "David", "Eve"];
+    // Example teams object after running the function
+    const teams = {
+    "Team A": ["Alice", "David"],
+    "Team B": ["Bob", "Charlie", "Eve"]
+    }; -->
+
+
+    <script>
+        const students = ["Alice", "Bob", "Charlie", "David", "Eve"];
+
+        function RandomTeamSelector() {
+
+            if (students.length === 0) {
+                console.error("Error: No students to assign!");
+                return;
+            }
+
+            let teams = {
+                "TeamA": [],
+                "TeamB": []
+            };
+
+
+
+            for (let i = 0; i < students.length; i++) {
+                let randomTeam = Math.floor(Math.random() * 2);
+
+                if (randomTeam === 0) {
+                    teams.TeamA.push(students[i]);
+                } else {
+                    teams.TeamB.push(students[i]);
+                }
+            }
+
+            if (teams.TeamA.length === 0) {
+                console.error("There is no student in TeamA");
+                console.log("Team B:", teams.TeamB);
+            } else if (teams.TeamB.length === 0) {
+                console.error("There is no student in TeamB");
+                console.log("Team A:", teams.TeamA); 
+            } else {
+                console.log("Teams Assignment:");
+                console.log("Team A:", teams.TeamA);
+                console.log("Team B:", teams.TeamB);
+            }
+        }
+
+        RandomTeamSelector();
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Methods</title>
+</head>
+
+<body>
+
+
+    <!-- Exercise 15: Array Methods
+    Task: Create an array that represents some numbers. Use the following methods on this array to complete the tasks:
+
+    Filter: Create a new array that contains only the even numbers (numbers divisible by 2).
+    Map: Create a new array where each number is multiplied by 2.
+    Reduce: Calculate the sum of the numbers in the original array.
+
+    Example Input:
+
+    const numbers = [1, 2, 3, 4, 5, 6];
+    Example Output:
+
+    Even Numbers: [2, 4, 6]
+    Multiplied by 2: [2, 4, 6, 8, 10, 12]
+    Sum: 21 -->
+
+    <script>
+
+        let array = [1, 2, 3, 4, 5, 6];
+        console.log("Normal Array: " + array)
+        let evenNumbers = array.filter((num)=>{
+            return num % 2 === 0;
+        })
+        console.log("Even Numbers: " + evenNumbers)
+
+        let Multipliedby2 = array.map((num)=>{
+            return num * 2
+        })
+        console.log("Multiply by 2: " + Multipliedby2)
+
+        let SumofArray = array.reduce((num1 , num2)=>{
+            return num1 + num2
+        })
+
+        console.log("Sum of all element in Array: " + SumofArray)
+
+    </script>
+
+</body>
+
+</html>
