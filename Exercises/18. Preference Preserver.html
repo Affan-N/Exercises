@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preference Preserver</title>
+    <style>
+        form {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"],
+        select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 13px 19px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Exercise 18: Preference Preserver
+
+    Objective: Build a form that allows a user to enter and save their preferences. The form data should be stored in
+    either localStorage or sessionStorage based on user choice, and data should persist after reloading the page.
+
+    Requirements:
+
+    Form Fields:
+
+    Name (Text input)
+    Theme Color (Dropdown with options like "Light" and "Dark")
+    Remember Preferences (Checkbox to decide if data goes into localStorage or sessionStorage)
+    Functionality:
+
+    When the user fills out the form and submits, their preferences should be saved.
+    Data should be loaded automatically on page refresh.
+    If "Remember Preferences" is checked, store data in localStorage, otherwise use sessionStorage.
+    Provide a "Clear Preferences" button to remove stored data.
+    Concepts Covered:
+
+    localStorage for persistent storage across sessions
+    sessionStorage for storage that clears when the session ends
+    Handling form submission and data retrieval -->
+
+
+    <form>
+        <input type="text" id="InputName" placeholder="Name">
+
+        <select id="Dropdown">
+
+            <option value="Default">Default</option>
+            <option value="Light">Light</option>
+            <option value="Dark">Dark</option>
+
+        </select>
+
+        <label for="local">localStorage</label>
+        <input type="checkbox" id="local">
+
+
+        <label for="session">sessionStorage</label>
+        <input type="checkbox" id="session">
+
+
+        <button id="submit" type="submit">Submit</button>
+        <button id="clear" type="reset">Clear</button>
+    </form>
+
+
+
+    <script>
+
+        let submit = document.getElementById("submit");
+        let clear = document.getElementById("clear");
+        let InputName = document.getElementById("InputName");
+        let Dropdown = document.getElementById("Dropdown");
+        let local = document.getElementById("local");
+        let session = document.getElementById("session");
+
+        let nameValue;
+        let dropValue;
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let getLocalName = localStorage.getItem("Username");
+            let getLocalTheme = localStorage.getItem("Theme");
+
+            let getSessionName = sessionStorage.getItem("Username");
+            let getSessionTheme = sessionStorage.getItem("Theme");
+
+            InputName.value = getLocalName || "";
+            Dropdown.value = getLocalTheme || "Default";
+
+            let getLocal = JSON.parse(localStorage.getItem("SetToLocal")) || false;
+            let getSession = JSON.parse(sessionStorage.getItem("SetToSession")) || false;
+            local.checked = getLocal;
+            session.checked = getSession;
+        });
+
+
+
+        submit.addEventListener("click", function (e) {
+            e.preventDefault();
+            nameValue = InputName.value;
+            dropValue = Dropdown.value;
+
+            if (local.checked && session.checked) {
+                localStorage.setItem("Username", nameValue)
+                localStorage.setItem("Theme", dropValue)
+                sessionStorage.setItem("Username", nameValue)
+                sessionStorage.setItem("Theme", dropValue)
+
+                localStorage.setItem("SetToLocal", local.checked)
+                sessionStorage.setItem("SetToSession", session.checked)
+
+                alert("Save preferences to localStorage and sessionStorage")
+
+            } else if (local.checked) {
+                localStorage.setItem("Username", nameValue)
+                localStorage.setItem("Theme", dropValue)
+
+                localStorage.setItem("SetToLocal", local.checked)
+
+                alert("Save preferences to localStorage")
+
+            } else if (session.checked) {
+                sessionStorage.setItem("Username", nameValue)
+                sessionStorage.setItem("Theme", dropValue)
+
+                sessionStorage.setItem("SetToSession", session.checked)
+
+                alert("Save preferences to sessionStorage")
+
+            }
+            else {
+                alert("Choose the storage device");
+                return;
+            }
+
+        })
+
+        clear.addEventListener("click", function () {
+            localStorage.removeItem("Username");
+            localStorage.removeItem("Theme");
+            localStorage.removeItem("SetToLocal");
+
+            sessionStorage.removeItem("Username");
+            sessionStorage.removeItem("Theme");
+            sessionStorage.removeItem("SetToSession");
+
+            alert("Everything is Reset")
+        })
+
+
+    </script>
+
+</body>
+
+</html>
