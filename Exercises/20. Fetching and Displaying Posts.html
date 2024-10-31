@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching and Displaying Posts</title>
+    <style>
+
+        #container{
+            padding: 10px;
+        }
+
+        .title{
+            font-size: 20px;
+        }
+        .body{
+            font-size: 16px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Exercise 20: Fetching and Displaying Posts
+    Objective: Build a simple app to fetch and display blog posts.
+    
+    Requirements:
+    
+    API URL: Use https://jsonplaceholder.typicode.com/posts to fetch posts data.
+    Fetch Button: Add a button that, when clicked, fetches the posts data.
+    Display: Show each post's title and body in a readable format on the page.
+    Error Handling: If there’s an issue with fetching, display an error message.
+    Clear Button: Add a “Clear Posts” button to remove the displayed posts from the page.
+    Concepts Covered:
+    
+    Basic fetch usage.
+    Updating the DOM with fetched data.
+    Basic error handling. -->
+
+    <button id="btn">Click to Fetch Data</button>
+    <button id="clear">Clear Posts</button>
+
+
+    <div id="container">
+
+    </div>
+
+    <script>
+        let btn = document.getElementById("btn");
+        let clear = document.getElementById("clear")
+        let container = document.getElementById("container")                
+
+        
+        
+
+        function displayData(e) {
+            container.style.display = "block"
+            e.forEach(element => {
+
+
+                let titleDiv = document.createElement("div");
+                titleDiv.classList.add("title");
+                container.append(titleDiv)
+                
+                let bodyDiv = document.createElement("div");
+                bodyDiv.classList.add("body");
+                container.append(bodyDiv)
+
+
+                titleDiv.textContent = element.title;
+
+                bodyDiv.textContent = element.body;
+
+                
+
+            });
+        }
+
+
+        btn.addEventListener("click", function(){
+
+            async function FetchingData() {
+
+                let res = await fetch("https://jsonplaceholder.typicode.com/posts")
+                if(!res.ok){
+                    console.log("Data not found");
+                }
+                let data = await res.json();
+                displayData(data)
+
+            }
+            FetchingData()
+        })
+
+        clear.addEventListener("click", function () {
+            container.innerHTML = "";
+        });
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching Data from an API</title>
+    <style>
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Exercise 19: Fetching Data from an API
+
+    Objective: Build a simple app to fetch user data from a public API and display it on the page.
+
+    Requirements:
+    API URL: Use https://jsonplaceholder.typicode.com/users (a fake API that provides user data).
+    Button: Add a button that, when clicked, fetches the data from this API.
+    Display Data: Show the fetched data on the page in a clear format, listing each user’s name, username, email, and
+    address.
+    Error Handling: If the fetch fails, display an error message.
+    Clear Data Button: Add a "Clear Data" button to remove displayed data from the page.
+    Concepts Covered:
+    Basic usage of fetch with then for promises.
+    Using async/await syntax.
+    Error handling with try-catch.
+    Updating the DOM to display fetched data. -->
+
+    <button id="btn">Click to Fetch Data</button>
+    <button id="clear">Clear Data</button>
+    <table id="userTable">
+    </table>
+
+
+    <script>
+
+
+        let btn = document.getElementById("btn");
+        let table = document.getElementById("userTable");
+        let clear = document.getElementById("clear");
+
+        function displayUsers(e) {
+            table.style.display = "table";
+            e.forEach(element => {
+                let tr = document.createElement("tr");
+
+                let name = document.createElement("td");
+                name.textContent = element.name;
+
+                let username = document.createElement("td");
+                username.textContent = element.username;
+
+                let email = document.createElement("td");
+                email.textContent = element.email;
+
+                let address = document.createElement("td");
+                address.textContent = `${element.address.street}, ${element.address.suite}, ${element.address.city}, ${element.address.zipcode}`;
+
+                let geo = document.createElement("td");
+                geo.textContent = `Lat: ${element.address.geo.lat}, Lng: ${element.address.geo.lng}`;
+
+                let phone = document.createElement("td");
+                phone.textContent = element.phone;
+
+                let website = document.createElement("td");
+                website.textContent = element.website;
+
+                let company = document.createElement("td");
+                company.textContent = element.company.name;
+
+                tr.appendChild(name);
+                tr.appendChild(username);
+                tr.appendChild(email);
+                tr.appendChild(address);
+                tr.appendChild(geo);
+                tr.appendChild(phone);
+                tr.appendChild(website);
+                tr.appendChild(company);
+                table.appendChild(tr);
+            });
+        }
+
+        function fetching() {
+            // Fetching Method 1
+
+            // fetch("https://jsonplaceholder.typicode.com/users")
+            //     .then((res) => res.json())
+            //     .then((data) => {
+            //         displayUsers(data);
+            //     })
+            //     .catch((err) => {
+            //         console.error("Error: " + err);
+            //     });
+
+            // Fetching Method 2
+            async function fetchData() {
+                try {
+                    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+                    if (!res.ok) {
+                        throw new Error("Not found");
+                    }
+
+                    const data = await res.json();
+                    displayUsers(data);
+                    btn.removeEventListener("click", fetching);
+
+                } catch (err) {
+                    console.error("Error:", err);
+                }
+            }
+
+            fetchData();
+        }
+
+        btn.addEventListener("click", fetching);
+
+        clear.addEventListener("click", function(){
+            table.style.display = "none";
+        })
+        
+
+    </script>
+
+</body>
+
+</html>
