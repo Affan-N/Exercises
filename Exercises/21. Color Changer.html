@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+
+    <style>
+        #container {
+            margin: 10px;
+        }
+
+        #box {
+            background-color: white;
+            border: 1px solid black;
+            margin-top: 10px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 500ms;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Exercise 21: Color Changer
+
+    Objective: Build an app where users can input any color, and the background color of a box changes to match it.
+    This will help you practice working with the DOM, handling events, and manipulating CSS with JavaScript.
+
+    Requirements:
+
+    HTML Structure:
+
+    An <input> field to enter color names (like "red", "blue", or hex codes like "#ff0000").
+    A "Change Color" button that changes the box's background color based on the input.
+    A "Reset Color" button that resets the box to its original color.
+    A <div> box where the color change will happen.
+
+    Functionality:
+
+    When "Change Color" is clicked, read the input color value and apply it to the <div> box's background.
+    When "Reset Color" is clicked, restore the box to its initial background color.
+    Concepts Covered:
+
+    Selecting elements with document.getElementById.
+    Using .value to get user input.
+    Changing CSS properties through JavaScript. -->
+
+    <div id="container">
+        <input type="text" id="inp" placeholder="Enter color name or code">
+        <button id="btn">Change Color</button>
+        <button id="clear">Reset Color</button>
+        <div id="box">
+            This is a Box
+        </div>
+    </div>
+
+    <script>
+        let inp = document.getElementById("inp")
+        let btn = document.getElementById("btn");
+        let clear = document.getElementById("clear");
+        let box = document.getElementById("box");
+
+        btn.addEventListener("click", function () {
+            let inputValue = inp.value.trim();
+            if (!inputValue) {
+                alert("Please enter the color name or code");
+                return;
+            };
+
+            box.style.backgroundColor = inputValue;
+            inp.value = "";
+
+            box.style.color = (box.style.backgroundColor === "black") ? "white" : "black";
+            
+            if (inputValue !== box.style.backgroundColor) {
+                alert("Wrong color name");
+            };
+
+        });
+
+        clear.addEventListener("click", function () {
+            box.style.backgroundColor = "white";
+            box.style.color = "black";
+        });
+
+    </script>
+</body>
+
+</html>
