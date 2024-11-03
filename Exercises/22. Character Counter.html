@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+</head>
+
+<style>
+    #box {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+    }
+
+    #textarea {
+        width: 600px;
+        height: 400px;
+        resize: none;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    #clear{
+        background-color: rgb(255, 58, 58);
+        border: 1px solid black;
+        border-radius: 20%;
+        font-size: 18px;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 200ms;
+    }
+
+    #clear:hover{
+        background-color: rgb(253, 89, 89);
+    }
+    #clear:active{
+        transform: scale(1.05);
+    }
+</style>
+
+<body>
+
+    <!-- Exercise 22: Character Counter
+    Objective:
+    Create an app that counts the characters (including spaces) and words in a text area as the user types.
+
+    Requirements:
+    HTML Structure:
+
+    A <textarea> for typing text.
+    A display for character count.
+    A display for word count.
+    A "Clear Text" button to reset the <textarea>.
+    Functionality:
+
+    As the user types in the <textarea>, display the updated character and word counts in real-time.
+    The "Clear Text" button should clear the <textarea> and reset both counts to zero.
+    Concepts Covered:
+    Using addEventListener for input events.
+    Accessing text area content with .value.
+    Using .split() to count words.
+    Basic conditionals for handling empty input. -->
+
+    <div id="box">
+        <p id="characterCount"></p>
+        <p id="wordCount"></p>
+        <p id="timerCount"></p>
+        <textarea id="textarea"></textarea>
+        <button id="clear">Reset</button>
+    </div>
+
+    <script>
+     let textarea = document.getElementById("textarea");
+let clear = document.getElementById("clear");
+let characterCount = document.getElementById("characterCount");
+let wordCount = document.getElementById("wordCount");
+let timerCount = document.getElementById("timerCount");
+
+let count = 10;
+let timer = null;
+let settime = null;
+
+characterCount.innerText = "Character Count: 0";
+wordCount.innerText = "Word Count: 0";
+timerCount.innerText = "10 seconds left";
+
+
+textarea.addEventListener("input", function () {
+    characterCount.innerText = "Character Count: " + textarea.value.length;
+    wordCount.innerText = "Word Count: " + textarea.value.trim().split(/\s+/).filter(word => word).length;
+
+    if (!timer) {
+        timer = setInterval(() => {
+            count--;
+            timerCount.innerText = count + " seconds left";
+            if (count === 0) {
+                clearInterval(timer);
+                timer = null;
+                textarea.disabled = true;
+            }
+        }, 1000);
+
+        settime = setTimeout(() => {
+            textarea.disabled = true;
+        }, 10000);
+    }
+});
+
+clear.addEventListener("click", function () {
+    textarea.value = "";
+    characterCount.innerText = "Character Count: 0";
+    wordCount.innerText = "Word Count: 0";
+    timerCount.innerText = "10 seconds left";
+
+    clearTimeout(settime);
+    settime = null;
+    clearInterval(timer);
+    timer = null;
+    count = 10;
+    textarea.disabled = false;
+});
+
+
+    </script>
+</body>
+
+</html>
