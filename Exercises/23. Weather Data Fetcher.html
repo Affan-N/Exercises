@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Fetcher</title>
+    <style>
+        #display {
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Exercise 23: Weather Data Fetcher
+    Objective:
+    Create an app that fetches weather data for a city entered by the user. Use a fake or simulated API to demonstrate
+    async/await and Promises. This will help you practice handling asynchronous data, using Promises, and writing code
+    with async/await syntax.
+
+    Requirements:
+    HTML Structure:
+
+    An <input> field where the user can enter a city name.
+    A "Get Weather" button to fetch weather data.
+    A display area to show the weather results (temperature, humidity, etc.).
+    A "Clear" button to reset the input and output fields.
+    Functionality:
+
+    When the user enters a city and clicks "Get Weather," simulate an asynchronous request to a weather API. You can use
+    setTimeout() to mimic an API delay.
+    Use Promises and async/await to handle the "API request."
+    Display the simulated weather data in the result area.
+    Use the "Clear" button to reset both the input and the result display area. 
+
+    Simulated API Data:
+
+    const fakeWeatherData = {
+        "New York": { temperature: "15°C", humidity: "78%" },
+        "Los Angeles": { temperature: "22°C", humidity: "65%" },
+        "London": { temperature: "10°C", humidity: "80%" },
+        "Tokyo": { temperature: "18°C", humidity: "70%" }
+    };
+
+    
+    Concepts Covered:
+    Working with async/await and Promises.
+    Handling user input and DOM updates.
+    Mimicking API data fetching with setTimeout(). -->
+
+    
+    <p>Example Cities: New York , Los Angeles , London , Tokyo </p>
+    <input type="text" id="inp" placeholder="City name">
+    <button id="btn">Get Weather</button>
+    <button id="clear">Reset</button>
+    <div id="display">
+        <p id="temp"></p>
+        <p id="humi"></p>
+    </div>
+
+
+    <script>
+
+        let inp = document.getElementById("inp");
+        let btn = document.getElementById("btn");
+        let clear = document.getElementById("clear");
+        let temp = document.getElementById("temp");
+        let humi = document.getElementById("humi");
+
+        btn.addEventListener("click", function () {
+            let city = inp.value.trim();
+
+            if (city === "") {
+                temp.textContent = "Please enter a city name.";
+                humi.textContent = "";
+                return;
+            }
+
+            weatherAPI(city);
+        });
+
+        async function weatherAPI(city) {
+            let randomTime = Math.floor(Math.random() * 3 + 1) * 1000;
+            await delay(randomTime);
+
+            const fakeWeatherData = {
+                "New York": { temperature: "15°C", humidity: "78%" },
+                "Los Angeles": { temperature: "22°C", humidity: "65%" },
+                "London": { temperature: "10°C", humidity: "80%" },
+                "Tokyo": { temperature: "18°C", humidity: "70%" }
+            };
+
+            if (fakeWeatherData[city]) {
+                temp.textContent = `Temperature: ${fakeWeatherData[city].temperature}`;
+                humi.textContent = `Humidity: ${fakeWeatherData[city].humidity}`;
+            } else {
+                temp.textContent = "City not found!";
+                humi.textContent = "Please enter a valid city.";
+            }
+
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        clear.addEventListener("click", function(){
+            temp.textContent = "";
+            humi.textContent = "";
+            inp.value = ""
+        });
+
+
+    </script>
+</body>
+
+</html>
