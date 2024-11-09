@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Processing with Promises</title>
+</head>
+
+<body>
+
+    <!-- Exercise 24: Order Processing with Promises
+    Objective: Create an order processing system using promises to understand the basics of handling asynchronous tasks
+    and promise chaining.
+
+    Scenario:
+
+    Your order system goes through three stages:
+
+    Order Placed
+    Order Packed
+    Order Dispatched
+    Each stage should have a delay (use setTimeout with delays like 1000ms, 2000ms, and 3000ms).
+
+    Error Handling:
+
+    Randomly simulate a failure at any stage (e.g., 50% chance).
+    If any stage fails, show an error message in the console like: "Error: Order cannot be completed."
+    Expected Output:
+
+    If all stages succeed, log this message in the console: "Order successfully placed, packed, and dispatched!"
+    Requirements:
+
+    Create three functions: placeOrder(), packOrder(), and dispatchOrder().
+    Each function should return a promise that resolves if the stage succeeds or rejects if it fails.
+    Chain these functions together and handle any potential errors. -->
+
+
+
+
+    <script>
+
+        function orderPlaced() {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        res("Order placed successfully");
+                    }
+                    else {
+                        rej("Failed to placed");
+                    }
+                }, 2000);
+            })
+        }
+
+
+        function orderPacked() {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        res("Order packed successfully");
+                    }
+                    else {
+                        rej("Failed to packed");
+                    }
+                }, 2000);
+            })
+        }
+
+
+
+        function orderDispatched() {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                        res("Order dispatched successfully");
+                    }
+                    else {
+                        rej("Failed to dispatched");
+                    }
+                }, 2000);
+            })
+        }
+
+        orderPlaced()
+            .then((message) => {
+                console.log(message);
+                return orderPacked();
+            })
+            .then((message) => {
+                console.log(message);
+                return orderDispatched();
+            })
+            .then((message) => {
+                console.log(message)
+                console.log("Order successfully placed, packed and dispatched!")
+            })
+            .catch((err) => {
+                console.error("Error: " + err)
+            })
+
+    </script>
+</body>
+
+</html>

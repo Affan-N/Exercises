@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter with Local Storage</title>
+</head>
+
+<body>
+
+    <!-- Objective: Create a simple app that counts the number of times a button is clicked and stores the count using local
+    storage, so the count persists even if the page is refreshed.
+
+    Requirements:
+
+    Create a button with the text "Click Me".
+    Display the number of times the button has been clicked.
+    When the button is clicked, the counter should increase by 1.
+    Store the counter value in local storage to persist the count even after a page reload.
+    Add a "Reset" button to reset the counter to 0.
+    Concepts Covered:
+
+    Event handling (addEventListener)
+    DOM manipulation
+    Local storage (localStorage.getItem, localStorage.setItem)
+
+    Expected Output Example:
+
+    Clicks: 5
+    [Click Me] [Reset] -->
+
+
+    <button id="click">Click Me</button>
+    <button id="reset">Reset</button>
+    <div id="numbers"></div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let StorageClicks = localStorage.getItem("No. of Clicks");
+
+            if (StorageClicks === null) {
+                StorageClicks = 0;
+            }
+
+            numbers.textContent = "Clicks: " + StorageClicks;
+        })
+
+        let click = document.getElementById("click");
+        let reset = document.getElementById("reset");
+        let numbers = document.getElementById("numbers");
+        let clickNum = 0;
+        
+        let StorageClicks = localStorage.getItem("No. of Clicks");
+        if(StorageClicks !== null){
+            clickNum = parseInt(StorageClicks)
+        }else{
+            StorageClicks = 0
+        }
+
+        numbers.textContent = "Clicks: " + clickNum;
+
+        click.addEventListener("click", function () {
+            clickNum++;
+            numbers.textContent = "Clicks: " + clickNum;
+            localStorage.setItem("No. of Clicks", clickNum)
+        })
+
+        reset.addEventListener("click", function () {
+            clickNum = 0;
+            numbers.textContent = "Clicks: " + 0;
+            localStorage.setItem("No. of Clicks", 0)
+        })
+
+    </script>
+</body>
+
+</html>
