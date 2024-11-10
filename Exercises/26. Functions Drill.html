@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions Drill</title>
+</head>
+
+<body>
+
+    <!-- Exercise 26: Functions Drill
+    Objective: Understand the basics of JavaScript functions, including parameters, arguments, return values, and
+    default values.
+
+    Requirements:
+    Function Creation: Create the following 3 functions:
+
+    addNumbers(num1, num2): Takes two numbers as parameters, adds them, and returns the result.
+    Example: addNumbers(5, 3) should return 8.
+
+    greetUser(name = "Guest"): Takes a single parameter name (with a default value of "Guest"). It should return a
+    greeting message.
+    Example: greetUser("Affan") should return "Hello, Affan!".
+    Example: greetUser() should return "Hello, Guest!".
+
+    calculateArea(length, width): Takes length and width as parameters and calculates the area of a rectangle. If any
+    parameter is missing, show a console error message: "Both length and width are required!". Example: calculateArea(5,
+    4) should return 20.
+    Example: calculateArea(5) should log an error.
+
+    Test Your Functions:
+
+    Call each function with different arguments to test them.
+    Print the results in the console for each call.
+    Concepts Covered:
+    Function Declaration
+    Parameters and Arguments
+    Return Values
+    Default Parameters
+    Error Handling
+    Bonus:
+    Create a function findMax(numbersArray) that takes an array of numbers and returns the maximum number using the
+    Math.max() function.
+    Example: findMax([10, 20, 30, 40, 50]) should return 50. -->
+
+
+
+
+    <script>
+
+        // Sum function
+        console.log('%cSum Function', 'font-weight: bold; color: cyan;');
+        function addNumbers(num1, num2) {
+            let result = num1 + num2;
+            return result
+        }
+        console.log(addNumbers(5, 3))
+        console.log(addNumbers(5, 10))
+
+
+        // Greet function
+        console.log('%cGreet Function', 'font-weight: bold; color: lime;');
+        function greetUser(name = "Guest") {
+            return "Hello " + name;
+        }
+        console.log(greetUser());
+        console.log(greetUser("Affan"));
+
+
+        // Area calculation
+        console.log('%cCalculate Area Function', 'font-weight: bold; color: orange;');
+        function calculateArea(length, width) {
+            if (length === undefined || width === undefined) {
+                console.error("Both length and width are required!");
+            } else {
+                console.log(length * width);
+            }
+        }
+
+        calculateArea(5)
+        calculateArea(5, 4)
+
+
+        // Find Maximum Function
+        console.log('%c Find Maximum Number Function', 'font-weight: bold; color: Yellow;');
+        function findMax(arr) {
+            if (arr.length === 0) {
+                return console.log("Array is empty!");
+            }
+            console.log(Math.max(...arr));
+        }
+
+        findMax([10, 20, 30, 40, 50])
+
+    </script>
+</body>
+
+</html>
