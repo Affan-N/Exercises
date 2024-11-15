@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    height: 380px;
+    width: 223px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-image img {
+    border: 1px solid black;
+    width: 200px;
+    -webkit-user-drag: none;
+}
+
+.product-name {
+    font-size: 25px;
+    padding: 5px 0;
+}
+
+.product-price {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.product-button {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    justify-content: flex-start;
+}
+
+.add-to-cart {
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: all 500ms;
+}
+
+.add-to-cart:active {
+    transform: translateY(-2px);
+}
+
+#cart-container {
+    display: none;
+}
+
+#pop-up-container {
+    position: relative;
+}
+
+
+#cart {
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 10px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+#cart:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: all 500ms;
+}
+
+#cart:active {
+    transform: translateY(-2px);
+}
+
+
+
+.popup {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 460px;
+    height: 500px;
+    overflow: auto;
+    min-height: 300px;
+    text-align: center;
+}
+
+.close-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.finalize {
+    background-color: lime;
+    color: white;
+    padding: 10px 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.X {
+    background-color: rgb(255, 61, 61);
+    color: white;
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+ul li {
+    list-style: none;
+}

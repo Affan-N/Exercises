@@ -1,0 +1,76 @@
+<!-- Exercise 37: Tailwind CSS Basics - Portfolio Card
+Objective: Create a simple portfolio card using Tailwind CSS. This exercise will help you get familiar with the basic utility classes of Tailwind so you can confidently use it in future projects, especially when learning React.
+
+Requirements:
+HTML Structure:
+
+Design a simple card that displays a user's profile (including an image, name, bio, and social media links).
+Styling with Tailwind CSS:
+
+Include Tailwind CSS using the CDN link and style the card using Tailwind's utility classes.
+Use classes for background colors, padding, margin, flexbox, text alignment, hover effects, etc.
+Features:
+The profile card should include:
+A profile image.
+User's name.
+A short bio/description.
+Social media links (icons are optional but you can add them if you want).
+Bonus (Optional):
+Make the card responsive using Tailwind's responsive design classes (e.g., for mobile, tablet, and desktop views).
+Hints:
+You can include Tailwind CSS directly in your HTML file using this CDN:
+
+<script src="https://cdn.tailwindcss.com"></script>
+Use Tailwind's basic classes like:
+bg-gray-200, p-4, m-2, flex, justify-center, items-center, rounded-lg, hover:bg-blue-500, etc.
+Output Example:
+A clean and responsive profile card styled with Tailwind CSS. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Basics - Portfolio Card</title>
+    <link rel="stylesheet" href="src/output.css">
+</head>
+
+<body class="flex justify-center items-center">
+
+    <div class="container flex justify-center items-center h-screen ">
+
+        <div class="card   flex flex-col items-center border border-black p-2 rounded-lg bg-white w-80">
+            <div class="cardImage">
+                <img draggable="false" class="w-20 "
+                    src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=">
+            </div>
+
+            <div class="cardName text-xl font-medium">
+                Abdullah
+            </div>
+
+            <div class="bio text-center mb-4 mt-2">
+                <h2 class="font-bold">Bio</h2>
+                A determined and positive individual, always striving to learn, grow, and inspire others. Passionate about innovation and overcoming challenges.
+            </div>
+
+            <div class="links">
+                <ul class="text-center space-y-1 border-t border-black">
+                    <h2 class="font-bold">Links</h2>
+                    <li class="li"><a href="#">Follow on Youtube</a></li>
+                    <li class="li"><a href="#">Follow on Facebook</a></li>
+                    <li class="li"><a href="#">Follow on Instagram</a></li>
+                </ul>
+                
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
